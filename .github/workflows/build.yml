@@ -95,6 +95,9 @@ jobs:
           git sparse-checkout set --no-cone iPhoneOS18.6.sdk
           git checkout
           mv *.sdk $THEOS/sdks
+          mkdir -p "$THEOS/sdks/iPhoneOS18.6.sdk/System/Library/PrivateFrameworks/Preferences.framework"
+          wget --quiet --no-verbose "https://raw.githubusercontent.com/theos/sdks/master/iPhoneOS16.5.sdk/System/Library/PrivateFrameworks/Preferences.framework/Preferences.tbd" -O "$THEOS/sdks/iPhoneOS18.6.sdk/System/Library/PrivateFrameworks/Preferences.framework/Preferences.tbd"
+          ls -l "$THEOS/sdks/iPhoneOS18.6.sdk/System/Library/PrivateFrameworks/Preferences.framework/"
 
       - name: Install cyan and tbd
         run: |
