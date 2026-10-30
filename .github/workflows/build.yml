@@ -274,6 +274,8 @@ jobs:
       - name: Build Alderis
         run: |
           cd Alderis
+          sed -i '' 's/iphone:latest:12.0/iphone:18.6:12.0/' Makefile
+          grep 'TARGET = iphone' Makefile
           make clean package DEBUG=0 FINALPACKAGE=1 ARCHS=arm64
           mv packages/*.deb ${{ github.workspace }}/alderis.deb
 
